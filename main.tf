@@ -42,3 +42,9 @@ variable "admin_username" {
   description = "The username for the local user account on the VM."
   default     = "azureadmin"
 }
+
+# Define the resource group
+resource "azurerm_resource_group" "rg" {
+  name     = "${var.labelPrefix}-A05-RG"
+  location = var.region
+}
