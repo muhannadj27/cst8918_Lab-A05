@@ -144,7 +144,7 @@ resource "azurerm_linux_virtual_machine" "webserver" {
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
   network_interface_ids = [azurerm_network_interface.webserver.id]
-  size                  = "Standard_B1s"
+  size                  = "Standard_D2s_v3"
 
   os_disk {
     name                 = "${var.labelPrefix}A05OSDisk"
