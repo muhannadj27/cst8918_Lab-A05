@@ -104,3 +104,17 @@ resource "azurerm_network_security_group" "webserver" {
     destination_address_prefix = "*"
   }
 }
+
+# Define the network interface
+resource "azurerm_network_interface" "webserver" {
+  name                = "${var.labelPrefix}A05Nic"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+
+  ip_configuration {
+    name                          = "${var.labelPrefix}A05NicConfig"
+    subnet_id                     = azurerm_subnet.webserver.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.webserver.id
+  }
+}
