@@ -170,3 +170,14 @@ resource "azurerm_linux_virtual_machine" "webserver" {
 
   custom_data = data.cloudinit_config.init.rendered
 }
+
+# Define output values for later reference
+output "resource_group_name" {
+  description = "The name of the resource group containing the webserver resources."
+  value       = azurerm_resource_group.rg.name
+}
+
+output "public_ip" {
+  description = "The public IP address assigned to the webserver VM."
+  value       = azurerm_public_ip.webserver.ip_address
+}
